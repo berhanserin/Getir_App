@@ -29,11 +29,11 @@ export default class SplashScreen extends Component {
             useNativeDriver: false,
         }).start(() => {
             const token = this.getStore('token')
-            console.log(token)
+			
             if (token == null) {
-                this.props.navigation.replace('LoginScreen')
+                this.props.navigation.replace('RegisterScreen')
             }
-            this.props.navigation.replace('RegisterScreen')
+            this.props.navigation.replace('LoginScreen')
         })
     }
     render() {

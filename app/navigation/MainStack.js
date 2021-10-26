@@ -12,14 +12,27 @@ export default class MainStack extends Component {
             <NavigationContainer>
                 <Stack.Navigator
                     initialRouteName={'SplashScreen'}
-                    screenOptions={{ headerShown: false }}
+                    screenOptions={{
+                        headerTitleAlign: 'center',
+                        title: 'getir',
+                        headerTintColor: 'yellow',
+                        headerTitleStyle: { fontWeight: '800', fontSize: 35 },
+                        headerShadowVisible: false,
+                        headerStyle: { backgroundColor: '#5056F1' },
+                    }}
                 >
                     <Stack.Screen
                         name="SplashScreen"
                         component={SplashScreen}
+                        options={{
+                            headerShown: false,
+                        }}
                     />
                     <Stack.Screen name="LoginScreen" component={LoginScreen} />
-                    <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+                    <Stack.Screen
+                        name="RegisterScreen"
+                        component={RegisterScreen}
+                    />
                 </Stack.Navigator>
             </NavigationContainer>
         )
