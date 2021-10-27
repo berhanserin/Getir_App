@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, Dimensions } from 'react-native'
 import Textinput from 'commons/Textinput/'
 import CustomBottoms from 'commons/CustomBottoms/'
 import * as yup from 'yup'
 import { Formik } from 'formik'
 
 export default class LoginScreen extends Component {
+    width = Dimensions.get('screen').width
+    height = Dimensions.get('screen').height
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.loginArea}>
+                <View style={[styles.loginArea, { height: this.height * 0.5 }]}>
                     <View
                         style={{
                             marginHorizontal: '8%',
-                            marginVertical: '20%',
+                            marginVertical: '15%',
                         }}
                     >
                         <Formik
@@ -62,7 +64,10 @@ export default class LoginScreen extends Component {
                                             Blur={handleBlur('uname')}
                                             placeholderTextColor="#5056F1"
                                             password={false}
-                                            style={styles.textInput}
+                                            style={[
+                                                styles.textInput,
+                                                { width: this.width * 0.8 },
+                                            ]}
                                         />
                                         {errors.uname && (
                                             <Text style={styles.errors}>
@@ -85,7 +90,10 @@ export default class LoginScreen extends Component {
                                             Blur={handleBlur('password')}
                                             placeholderTextColor="#5056F1"
                                             password={true}
-                                            style={styles.textInput}
+                                            style={[
+                                                styles.textInput,
+                                                { width: this.width * 0.8 },
+                                            ]}
                                         />
                                         {errors.password && (
                                             <Text style={styles.errors}>
@@ -101,8 +109,8 @@ export default class LoginScreen extends Component {
                                     >
                                         <CustomBottoms
                                             text="Şifreyi Unuttum"
-                                            textstyle={styles.submidText}
-                                            click={() => {}}
+                                            textColor={'#5056F1'}
+                                            onPress={() => {}}
                                         />
                                     </View>
                                     <View
@@ -113,9 +121,15 @@ export default class LoginScreen extends Component {
                                     >
                                         <CustomBottoms
                                             text="Hesap Oluştur"
-                                            btnstyle={styles.girisYapSubmit}
-                                            textstyle={styles.submidText}
-                                            click={handleSubmit}
+                                            borderWidth={1}
+                                            borderRadius={10}
+                                            borderColor={'#5056F1'}
+                                            width={this.width * 0.8}
+                                            height={this.height * 0.05}
+                                            alignItems={'center'}
+                                            justifyContent={'center'}
+                                            textColor={'#5056F1'}
+                                            onPress={handleSubmit}
                                         />
                                     </View>
                                 </View>
@@ -133,7 +147,6 @@ const styles = StyleSheet.create({
         marginTop: '30%',
         backgroundColor: 'white',
         marginHorizontal: '5%',
-        height: '70%',
         borderRadius: 15,
     },
     container: {
@@ -145,20 +158,14 @@ const styles = StyleSheet.create({
     textInput: {
         color: '#000',
         borderRadius: 10,
-        width: '100%',
         borderColor: '#5056F1',
         backgroundColor: 'white',
         marginLeft: 5,
         borderWidth: 1,
     },
     girisYapSubmit: {
-        borderWidth: 1,
-        borderRadius: 10,
-        width: '100%',
-        height: '40%',
-        justifyContent: 'center',
-        alignItems: 'center',
         borderColor: '#5056F1',
+        justifyContent: 'center',
     },
     submidText: { color: '#5056F1' },
 })

@@ -1,19 +1,39 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
+import PropTypes from 'prop-types'
 
 export default class CustomBottoms extends Component {
     render() {
-        const { text, btnstyle, textstyle } = this.props
+        const {
+            text,
+            width,
+            borderColor,
+            borderRadius,
+            borderWidth,
+            alignItems,
+            textColor,
+            onPress,
+            height,
+            justifyContent,
+        } = this.props
         return (
-            <TouchableOpacity style={btnstyle}>
-                <Text style={textstyle}>{text}</Text>
+            <TouchableOpacity
+                onPress={onPress}
+                style={{
+                    height,
+                    width,
+                    borderColor,
+                    borderRadius,
+                    borderWidth,
+                    alignItems,
+                    justifyContent,
+                }}
+            >
+                <Text style={{ color: textColor }}>{text}</Text>
             </TouchableOpacity>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-})
+CustomBottoms.propTypes = {
+    text: PropTypes.string.isRequired,
+}
